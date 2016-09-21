@@ -42,7 +42,7 @@
 
 ### 4. APIキーの設定
 
-* loginシーンの`NCMBSettings`を編集します
+* blackboardシーンの`NCMBSettings`を編集します
 * 先程[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)のダッシュボード上で確認したAPIキーを貼り付けます
 
 ![画像07](https://github.com/hounenhounen/UnityLoginApp/blob/master/readme-img/ApiKey.png)
