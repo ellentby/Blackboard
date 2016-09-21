@@ -1,6 +1,6 @@
 # 【Unity】描いた絵をクラウドで共有しましょ！
 ### 簡単な絵を描く、クラウドに保存・取得するのアプリ「Blackboard」
-<img src="readme-img/illustration.png" width="800px"/>
+<img src="readme-img/illustration.png" width="1000px"/>
 
 ## 概要
 * [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の『ファイルストア機能』を利用してUnityのサンプルプゲームプロジェクトです
@@ -37,7 +37,7 @@
 
 ### 3. Unityでアプリを起動
 
-* ダウンロードしたフォルダを解凍し、Unityから開いてください。その後、loginシーンを開いてください。
+* ダウンロードしたフォルダを解凍し、Unityから開いてください。その後、blackboardシーンを開いてください。
 
 
 ### 4. APIキーの設定
@@ -80,7 +80,7 @@
 ``````````LoadImage.cs            クラウドで保存された最新の四枚の画像を取得し、展示する
 `````````
 ###「SaveImage.cs」画像を取得し、クラウドに保存
-* <a href="https://docs.unity3d.com/ScriptReference/Texture2D.ReadPixels.html">Texture2D.ReadPixels()</a>関数にとうして、変量「camera」が撮った画面をbyte[]のタイプでれ
+* <a href="https://docs.unity3d.com/ScriptReference/Texture2D.ReadPixels.html">Texture2D.ReadPixels()</a>関数に通して、変量「camera」（シーンのMainCamera）が撮った画面をbyte[]タイプのスクリーンショートで取得します。
 ``````cs
 public Camera camera;
 RenderTexture renderTexture;
@@ -108,6 +108,60 @@ public void saveImage () {
 	}
 ``````
 
+* 取得した画像データをmBaas（ニフティクラウドmobile backend）のSDKでクラウドに保存します。
+``````cs
+	void saveToCloud(byte[] bytes, string name){
+		NCMBFile file = new NCMBFile (name, bytes);
+		file.SaveAsync ((NCMBException error) => {
+			if (error != null) {
+				// 失敗
+				Debug.Log("upload image error");
+			} else {
+				//成功
+				Debug.Log("upload image success");
+				Application.LoadLevel("blackboard");
+			}
+		});
+	}
+``````
+
+###「LoadImage.cs」クラウドから画像を取得し、スクリーンで展示
+
+``````cs
+	public List<Image> imageList;//シーン「gallery」の四つのImage Gameobject
+
+	// Use this for initialization
+	void Start () {
+		//シーンが開始した時、1つずつ画像を取得する
+		for(int i=0; i<imageList.Count; i++){
+			LoadOneImage (i, imageList[i]);
+		}
+	}
+
+	public void LoadOneImage(int index, Image go){
+		NCMBQuery<NCMBFile> query = NCMBFile.GetQuery ();
+		query.Skip = index;
+		query.Limit = 1;
+		query.OrderByDescending ("createDate");
+		query.FindAsync ((List<NCMBFile> objList, NCMBException error) => {
+			if (error != null) {
+				// 検索失敗
+			} else {
+				// 検索成功
+				foreach (NCMBFile file in objList) {
+					file.FetchAsync ((byte[] fileData, NCMBException e) => {
+						if (e != null) {
+							// 取得失敗
+						} else {
+							// 取得成功
+							SaveBytes(fileData, go);
+						}
+					});
+				}
+			}
+		});
+	}
+``````
 
 ## 参考
 * ニフティクラウドmobile backend の[ドキュメント（会員管理）](http://mb.cloud.nifty.com/doc/current/user/basic_usage_unity.html)
