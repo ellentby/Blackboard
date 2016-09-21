@@ -34,8 +34,8 @@ public class SaveImage : MonoBehaviour{
 		NCMBFile file = new NCMBFile (name, bytes);
 		file.SaveAsync ((NCMBException error) => {
 			if (error != null) {
-				Debug.Log("upload image error");
 				// 失敗
+				Debug.Log("upload image error");
 			} else {
 				//成功
 				Debug.Log("upload image success");
