@@ -29,13 +29,13 @@
 ![画像3](readme-img/register.png)
 
 * アプリ作成されると下図のような画面になります
-* この２種類のAPIキー（アプリケーションキーとクライアントキー）はこれからのステップで使います。
+* この２種類のAPIキー（アプリケーションキーとクライアントキー）は次のステップで使います。
 
 ![画像4](https://github.com/natsumo/SwiftLoginApp/blob/master/readme-img/004.png)
 
 ### 2. GitHubからサンプルプロジェクトの<a href="https://github.com/ellentby/Blackboard/archive/master.zip">ダウンロード</a>
 
-* 上記のリンクをクリックして、プロジェクトをダウンロード下さい。
+* 上記のリンクをクリックして、プロジェクトをダウンロードして下さい。
 
 ### 3. Unityでアプリを起動
 
@@ -49,7 +49,7 @@
 
 ![画像07](https://github.com/hounenhounen/UnityLoginApp/blob/master/readme-img/ApiKey.png)
 
-* シーンを保存して下さい。
+* 貼り付けたらシーンを保存して下さい。
 
 ### 5. アプリ再生
 * Unity画面で上部真ん中の実行ボタン（さんかくの再生マーク）をクリックして、次の画面が出たら、成功です！
@@ -190,8 +190,8 @@ public void saveImage () {
 
 ## 参考
 * ニフティクラウドmobile backend の[ドキュメント（ファイルストア）](http://mb.cloud.nifty.com/doc/current/filestore/basic_usage_unity.html)
-* このアプリを基にしての落書きゲーム[「Doodle」](https://github.com/ellentby/Doodle-DrawTogether)
-* このアプリで使用されるネットからの素材：<br/>
+* このアプリを基にした落書きゲーム[「Doodle」](https://github.com/ellentby/Doodle-DrawTogether)
+* このアプリで使用した素材：<br/>
 画像　https://www.w3.org/2016/Talks/W3CTrack-IH/
 http://www.cutemomentsphotography.com/blackboardadventures.html<br/>
 フォント　http://www.11-d.net/11-D35_fonts.htm
