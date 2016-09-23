@@ -3,7 +3,7 @@
 <img src="readme-img/illustration.png" width="1000px"/>
 
 ## 概要
-* [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の『ファイルストア機能』を利用してUnityのサンプルプゲームプロジェクトです
+* [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の『ファイルストア機能』を利用してUnityのサンプルププロジェクトです
 * 簡単な操作ですぐに [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の機能を体験いただけます★☆
 
 ## ニフティクラウドmobile backendって何？？
@@ -58,7 +58,7 @@
 
 <br/>
 ###『STEP 2』アプリ操作　＆　動作確認
-* ブラックボードに適当な絵や文字をか描いて、「Save」ボタンをクリックして下さい。
+* ブラックボードに適当な絵や文字を描いて、「Save」ボタンをクリックして下さい。
 <img src="readme-img/01draw.png" width="700px"/>
 * セーブが完了したら、ブラックボードは初期化されます。「Gallery」をクリックすると、先ほど描いた絵を確認できます。
 <img src="readme-img/02check.png" width="900px"/>
@@ -191,3 +191,7 @@ public void saveImage () {
 ## 参考
 * ニフティクラウドmobile backend の[ドキュメント（ファイルストア）](http://mb.cloud.nifty.com/doc/current/filestore/basic_usage_unity.html)
 * このアプリを基にしての落書きゲーム[「Doodle」](https://github.com/ellentby/Doodle-DrawTogether)
+* このアプリで使用されるネットからの素材：<br/>
+画像　https://www.w3.org/2016/Talks/W3CTrack-IH/
+http://www.cutemomentsphotography.com/blackboardadventures.html<br/>
+フォント　http://www.11-d.net/11-D35_fonts.htm
