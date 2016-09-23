@@ -79,7 +79,8 @@
 ``````````SaveImage.cs            描いた絵をスクリーンショットで取得し、クラウドに保存する
 ``````````LoadImage.cs            クラウドで保存された最新の四枚の画像を取得し、展示する
 `````````
-###「SaveImage.cs」画像を取得し、クラウドに保存
+###「SaveImage.cs」
+####画像を取得し、クラウドに保存
 * <a href="https://docs.unity3d.com/ScriptReference/Texture2D.ReadPixels.html">Texture2D.ReadPixels()</a>関数に通して、変量「camera」（シーンのMainCamera）が撮った画面をbyte[]タイプのスクリーンショートで取得します。
 ``````cs
 public Camera camera;
@@ -125,8 +126,15 @@ public void saveImage () {
 	}
 ``````
 
-###「LoadImage.cs」クラウドから画像を取得し、スクリーンで展示
+###「LoadImage.cs」
+####クラウドから画像を取得し、スクリーンで展示
 
+*　シーン「gallery」に四つのImage Gameobjectを用意します。これからクラウドから取得す津画像は、この四つのGameobjectで表示します。
+
+![画像07](readme-img/4images.png)
+
+* 以下のコードで、最新画像を1つずつクラウドから取得します。<br/>
+  「imageList」の中は、シーンから取得した四つのImage Gameobjectです。
 ``````cs
 	public List<Image> imageList;//シーン「gallery」の四つのImage Gameobject
 
@@ -140,6 +148,7 @@ public void saveImage () {
 
 	public void LoadOneImage(int index, Image go){
 		NCMBQuery<NCMBFile> query = NCMBFile.GetQuery ();
+		//検索条件を設定する
 		query.Skip = index;
 		query.Limit = 1;
 		query.OrderByDescending ("createDate");
@@ -163,8 +172,18 @@ public void saveImage () {
 	}
 ``````
 
+*　取得した画像を、Image Gameobjectで表示します。
+
+`````cs
+	void SaveBytes(byte[] b, Image go){
+		Texture2D texture = new Texture2D (100,100);
+		texture.LoadImage (b);
+		Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+		go.sprite = sprite;
+		Resources.UnloadUnusedAssets(); 
+	}
+`````
+
 ## 参考
-* ニフティクラウドmobile backend の[ドキュメント（会員管理）](http://mb.cloud.nifty.com/doc/current/user/basic_usage_unity.html)
 * ニフティクラウドmobile backend の[ドキュメント（ファイルストア）](http://mb.cloud.nifty.com/doc/current/filestore/basic_usage_unity.html)
-* ニフティクラウドmobile backend の[ドキュメント（データストア）](http://mb.cloud.nifty.com/doc/current/datastore/basic_usage_unity.html)
-* このアプリの[機能解説ドキュメント](https://github.com/ellentby/Doodle-DrawTogether/blob/master/%E6%A9%9F%E8%83%BD%E8%A7%A3%E8%AA%AC.md)
+* このアプリを基にしての落書きゲーム[「Doodle」](https://github.com/ellentby/Doodle-DrawTogether)
