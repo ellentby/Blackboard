@@ -71,7 +71,7 @@
 
 ##機能解説
 ### SDKのインポートと初期設定
-* ニフティクラウドmobile backend の[ドキュメント（クイックスタート）](http://mb.cloud.nifty.com/doc/current/introduction/quickstart_unity.html)をUnity版に書き換えたドキュメントをご用意していますので、ご活用ください
+* ニフティクラウドmobile backend の[ドキュメント（クイックスタート）](http://mb.cloud.nifty.com/doc/current/introduction/quickstart_unity.html)をUnity版に書き換えたドキュメントをご用意していますので、ご活用ください。
 
 ### コード解説
 プロジェクトのコードファイルは以下の五つになります。これから、`「SaveImage.cs」`と`「LoadImage.cs」`について解説します。
