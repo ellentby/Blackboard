@@ -1,5 +1,5 @@
-# 【Unity】描いた絵をクラウドで共有しましょ！
-### 簡単な絵を描く、クラウドに保存・取得するのアプリ「Blackboard」
+# 【Unity】描いた絵をクラウドで共有しましょう！
+### 簡単な絵を描いて、クラウドに保存・取得するのアプリ「Blackboard」
 <img src="readme-img/illustration.png" width="1000px"/>
 
 ## 概要
@@ -21,7 +21,7 @@
 
 
 ## 手順
-###『STEP 1』アカウントせ作成 ⇒ アプリ起動
+###『STEP 1』準備＆アプリ起動
 ### 1. [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の会員登録とログイン→アプリ作成
 
 * 上記リンクから会員登録（無料）をします。登録ができたらログインをすると下図のように「アプリの新規作成」画面が出るのでアプリを作成します
@@ -29,11 +29,13 @@
 ![画像3](readme-img/register.png)
 
 * アプリ作成されると下図のような画面になります
-* この２種類のAPIキー（アプリケーションキーとクライアントキー）はXcodeで作成するiOSアプリに[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)を紐付けるために使用します
+* この２種類のAPIキー（アプリケーションキーとクライアントキー）はこれからのステップで使います。
 
 ![画像4](https://github.com/natsumo/SwiftLoginApp/blob/master/readme-img/004.png)
 
-### 2. [GitHub](https://github.com/hounenhounen/UnityLoginApp)からサンプルプロジェクトの<a href="https://github.com/ellentby/Blackboard/archive/master.zip">ダウンロード</a>
+### 2. GitHubからサンプルプロジェクトの<a href="https://github.com/ellentby/Blackboard/archive/master.zip">ダウンロード</a>
+
+* 上記のリンクをクリックして、プロジェクトをダウンロード下さい。
 
 ### 3. Unityでアプリを起動
 
@@ -47,26 +49,24 @@
 
 ![画像07](https://github.com/hounenhounen/UnityLoginApp/blob/master/readme-img/ApiKey.png)
 
-* それぞれ`YOUR_NCMB_APPLICATION_KEY`と`YOUR_NCMB_CLIENT_KEY`の部分を書き換えます
- * このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
-* 書き換え終わったら、シーンを保存して下さい。
+* シーンを保存して下さい。
 
 ### 5. アプリ再生
-* Unity画面で上部真ん中の実行ボタン（さんかくの再生マーク）をクリックしして、次の画面が出たら、成功になります！
+* Unity画面で上部真ん中の実行ボタン（さんかくの再生マーク）をクリックして、次の画面が出たら、成功です！
 
 <img src="readme-img/blackboard-empty.png" width=600px>
 
 <br/>
 ###『STEP 2』アプリ操作　＆　動作確認
-* ブラックボードに適当な絵をか描いて下さい。そして、「Save」ボタンをクリックして下さい。
+* ブラックボードに適当な絵や文字をか描いて、「Save」ボタンをクリックして下さい。
 <img src="readme-img/01draw.png" width="700px"/>
-* セーブが完了したら、ブラックボードは初期化にされます。そして、「Gallery」をクリックすると、先ほどか描いた絵を確認できます。
+* セーブが完了したら、ブラックボードは初期化されます。「Gallery」をクリックすると、先ほど描いた絵を確認できます。
 <img src="readme-img/02check.png" width="900px"/>
 
 ---------
-* ダッシュボードで動作確認しましょう！
+* ダッシュボードも確認しましょう！
   1. ニフティクラウドmobile backendの<a href="https://console.mb.cloud.nifty.com">ダッシュボード</a>で、左の「ファイルストア」をクリックして下さい。
-  2. 先ほど描いた絵のファイルを確認しましょう。
+  2. 先ほど描いた絵の画像ファイルが保存されていることが確認できます。
 ![画像14](readme-img/03filestore.png)
 
 ##機能解説
@@ -74,7 +74,7 @@
 * ニフティクラウドmobile backend の[ドキュメント（クイックスタート）](http://mb.cloud.nifty.com/doc/current/introduction/quickstart_unity.html)をUnity版に書き換えたドキュメントをご用意していますので、ご活用ください。
 
 ### コード解説
-プロジェクトのコードファイルは以下の五つになります。これから、`「SaveImage.cs」`と`「LoadImage.cs」`について解説します。
+プロジェクトのコードファイルは以下の5つになります。これから、`「SaveImage.cs」`と`「LoadImage.cs」`について解説します。
 `````````
 `````Asset/script
 ``````````ButtonController.cs     ボタンのclickeventの処理
@@ -85,7 +85,7 @@
 `````````
 ###「SaveImage.cs」
 ####画像を取得し、クラウドに保存
-* <a href="https://docs.unity3d.com/ScriptReference/Texture2D.ReadPixels.html">Texture2D.ReadPixels()</a>関数に通して、変量「camera」（シーンのMainCamera）が撮った画面をbyte[]タイプのスクリーンショートで取得します。
+* <a href="https://docs.unity3d.com/ScriptReference/Texture2D.ReadPixels.html">Texture2D.ReadPixels()</a>関数を使って、変数「camera」（シーンのMainCamera）が撮った画面をbyte[]タイプのスクリーンショットで取得する処理：
 ``````cs
 public Camera camera;
 RenderTexture renderTexture;
@@ -113,7 +113,7 @@ public void saveImage () {
 	}
 ``````
 
-* 取得した画像データをmBaas（ニフティクラウドmobile backend）のSDKでクラウドに保存します。
+* 取得した画像データをクラウドに保存する処理：
 ``````cs
 	void saveToCloud(byte[] bytes, string name){
 		NCMBFile file = new NCMBFile (name, bytes);
@@ -131,14 +131,14 @@ public void saveImage () {
 ``````
 
 ###「LoadImage.cs」
-####クラウドから画像を取得し、スクリーンで展示
+####クラウドから画像を取得し、スクリーンで表示
 
-*　シーン「gallery」に四つのImage Gameobjectを用意します。これからクラウドから取得する画像は、この四つのGameobjectで表示します。
+* シーン「gallery」に4つのImage Gameobjectを用意します。クラウドから取得した画像は、この4つのGameobjectで表示しています。
 
 ![画像07](readme-img/4images.png)
 
-* 以下のコードで、最新画像を1つずつクラウドから取得します。<br/>
-  「imageList」の中は、シーンから取得した四つのImage Gameobjectです。
+* 最新画像を1つずつクラウドから取得する処理：<br/>
+  - 「imageList」の中身は、シーンから取得した4つのImage Gameobjectです。
 ``````cs
 	public List<Image> imageList;//シーン「gallery」の四つのImage Gameobject
 
@@ -176,7 +176,7 @@ public void saveImage () {
 	}
 ``````
 
-*　取得した画像を、Image Gameobjectで表示します。
+* 取得した画像をImage Gameobjectで表示する処理：
 
 `````cs
 	void SaveBytes(byte[] b, Image go){
