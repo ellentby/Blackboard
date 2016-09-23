@@ -70,6 +70,10 @@
 ![画像14](readme-img/03filestore.png)
 
 ##機能解説
+### SDKのインポートと初期設定
+* ニフティクラウドmobile backend の[ドキュメント（クイックスタート）](http://mb.cloud.nifty.com/doc/current/introduction/quickstart_unity.html)をUnity版に書き換えたドキュメントをご用意していますので、ご活用ください
+
+### コード解説
 プロジェクトのコードファイルは以下の五つになります。これから、`「SaveImage.cs」`と`「LoadImage.cs」`について解説します。
 `````````
 `````Asset/script
@@ -129,7 +133,7 @@ public void saveImage () {
 ###「LoadImage.cs」
 ####クラウドから画像を取得し、スクリーンで展示
 
-*　シーン「gallery」に四つのImage Gameobjectを用意します。これからクラウドから取得す津画像は、この四つのGameobjectで表示します。
+*　シーン「gallery」に四つのImage Gameobjectを用意します。これからクラウドから取得する画像は、この四つのGameobjectで表示します。
 
 ![画像07](readme-img/4images.png)
 
