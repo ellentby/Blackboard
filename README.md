@@ -16,7 +16,7 @@
 ## 動作環境
 * windows7以上、或いはOS X
 * Unity5.3.5以上
-* Android 6.0以上
+* Android 4.4 - 7.x
 * IOS 10以上
 
 ※上記内容で動作確認をしています。
