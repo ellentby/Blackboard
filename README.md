@@ -33,7 +33,7 @@
 * アプリ作成されると下図のような画面になります
 * この２種類のAPIキー（アプリケーションキーとクライアントキー）は次のステップで使います。
 
-![画像4](https://github.com/natsumo/SwiftLoginApp/blob/master/readme-img/004.png)
+![画像4](/readme-img/004.png)
 
 ### 2. GitHubからサンプルプロジェクトの<a href="https://github.com/ellentby/Blackboard/archive/master.zip">ダウンロード</a>
 
@@ -49,7 +49,7 @@
 * blackboardシーンの`NCMBSettings`を編集します
 * 先程[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)のダッシュボード上で確認したAPIキーを貼り付けます
 
-![画像07](https://github.com/hounenhounen/UnityLoginApp/blob/master/readme-img/ApiKey.png)
+![画像07](/readme-img/ApiKey.png)
 
 * 貼り付けたらシーンを保存して下さい。
 
